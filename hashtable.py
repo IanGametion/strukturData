@@ -58,3 +58,12 @@ if __name__ == "__main__":
     H[54] = "data"
     H[26] = "algorithms"
     H[93] = "made"
+    H[17] = "easy"
+    H[77] = "CarrerMonk"
+    H[31] = "Jobs"
+    H[44] = "Hunting"
+    H[55] = "King"
+    H[20] = "Lion"
+    print(H.slots)
+    print(H.data)
+    print(H[20])
