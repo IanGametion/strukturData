@@ -38,3 +38,23 @@ class Vertex:
 class Graph:
     def __init__(self):
         self.vertDict = {}
+
+    def __iter__(self):
+        return iter(self.vertDict.values())
+
+    def addVertex(self, node):
+        self.numVert = self.numVert + 1
+        newVertex = Vertex(node)
+        self.vertDict[node] = newVert
+        return newVert
+    
+    def getVertex(self, n):
+        if n in self.vertDict:
+            return self.vertDict[n]
+        else:
+            return None
+
+    def addEdge(self, frm, to, cost = 0):
+        if frm not in self.vertDict:
+            self.addVertex(frm)
+            
