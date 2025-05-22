@@ -33,7 +33,9 @@ def times_Mtx2D(mtx1, mtx2):
     for i in range(rw1):
         for j in range(cl2):
             for k in range(cl1):
+                print(f"i: {i}, j: {j}, k: {k}")
                 mtx[i][j] += mtx1[i][k] * mtx2[k][j]
+                print(f"mtx[{i}][{j}] = {mtx[i][j]}")
     return mtx
 
 row = int(input("Enter number of rows: "))
@@ -55,5 +57,3 @@ print_Mtx2D(mtx)
 print("\nResults Multiply:")
 mtx = times_Mtx2D(mtx1, mtx2)
 print_Mtx2D(mtx)
-
-print(len(mtx1))
