@@ -20,8 +20,20 @@ def print_Mtx2D(mtx):
 
 def add_Mtx2D(mtx1, mtx2):
     rw, cl = len(mtx1), len(mtx1[0])
-    mtx = [[0]* cl] * rw
     mtx = [[mtx1[i][j] + mtx2[i][j] for j in range(cl)] for i in range(rw)]
+    return mtx
+
+# PERKALIAN MATRIKS
+def times_Mtx2D(mtx1, mtx2):
+    rw1, cl1 = len(mtx1), len(mtx1[0])
+    rw2, cl2 = len(mtx2), len(mtx2[0])
+    
+    mtx = [[0 for j in range(cl2)] for i in range(rw1)]
+    
+    for i in range(rw1):
+        for j in range(cl2):
+            for k in range(cl1):
+                mtx[i][j] += mtx1[i][k] * mtx2[k][j]
     return mtx
 
 row = int(input("Enter number of rows: "))
@@ -30,10 +42,18 @@ print("Enter first matrix: ")
 mtx1 = create_Mtx2D(row, col)
 print("Enter second matrix: ")
 mtx2 = create_Mtx2D(row, col)
+
 print("First matrix: ")
 print_Mtx2D(mtx1)
 print("Second matrix: ")
 print_Mtx2D(mtx2)
+
+print("\nResults Add:")
 mtx = add_Mtx2D(mtx1, mtx2)
-print("Results:")
 print_Mtx2D(mtx)
+
+print("\nResults Multiply:")
+mtx = times_Mtx2D(mtx1, mtx2)
+print_Mtx2D(mtx)
+
+print(len(mtx1))
