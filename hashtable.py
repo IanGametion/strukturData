@@ -24,7 +24,7 @@ class HashTable:
                     self.data[nextSlot] = data
     
     def hashFunc(self, key, size):
-        return key % size
+        return (key % size)
     
     def rehash(self, oldhash, size):
         return (oldhash + 1) % size
