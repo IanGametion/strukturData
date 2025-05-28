@@ -48,7 +48,7 @@ class TodoList:
         temp = self.head
         i = 1
         while temp is not None:
-            print("Description: " + temp.description + ", Priority: " + temp.priority)
+            print("Description: " + temp.description + ", Priority: " + str(temp.priority))
             temp = temp.next
             i += 1
 
