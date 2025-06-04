@@ -23,4 +23,23 @@ class Stack:
         self.top -= 1
         return item
     
+class Maze:
+    ROWS = 15
+    COLS = 15
     
+    def __init__(self):
+        self.stack = Stack(self.ROWS * self.COLS)
+        self.matrix = [
+            [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0],
+            [0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0],
+            [0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0]
+        ]
+    
+    def can_move(self, row, col):
+        return (0 <= row < self.ROWS and 0 <= col < self.COLS and self. matrix[row][col] == 0)
+    
+    def print_maze(self):
+        for row in self.matrix:
+            print(" ".join(str(cell) for cell in row))
