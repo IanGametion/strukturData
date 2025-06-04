@@ -24,7 +24,7 @@ class Stack:
         return item
     
 class Maze:
-    ROWS = 15
+    ROWS = 5
     COLS = 15
     
     def __init__(self):
@@ -34,7 +34,7 @@ class Maze:
             [0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0],
             [0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0],
             [0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0],
-            [0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0]
+            [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0]
         ]
     
     def can_move(self, row, col):
@@ -43,3 +43,50 @@ class Maze:
     def print_maze(self):
         for row in self.matrix:
             print(" ".join(str(cell) for cell in row))
+    
+    def solve(self, row, col):
+        if row == self.ROWS - 1 and col == self.COLS - 1:
+            self.stack.push(Point(row, col))
+            return 1
+        
+        if self.can_move(row, col):
+            self.stack.push(Point(row, col))
+            self.matrix[row][col] = 1
+            
+            if self.solve(row,col + 1) == 1:
+                return 1
+            
+            if self.solve(row + 1,col) == 1:
+                return 1
+            
+            if self.solve(row,col - 1) == 1:
+                return 1
+            
+            if self.solve(row - 1,col) == 1:
+                return 1
+            
+            self.stack.pop()
+            self.matrix[row][col] = 0 
+            return 0
+        return 0
+    
+    def print_path(self):
+        count = 1
+        while not self.stack.is_empty():
+            p = self.stack.pop()
+            print(str(count) + ": ({" + str(p.row) + ", " + str(p.col) + "})")
+            count += 1
+
+def main():
+    maze = Maze()
+    print("This is the Maze:")
+    maze.print_maze()
+    
+    if maze.solve(0, 0) == 1:
+        print("\n\nThis is the path found:")
+        maze.print_path()
+    else:
+        print("No path found to exit.")
+
+if __name__ == "__main__":
+    main()
