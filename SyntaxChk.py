@@ -37,3 +37,17 @@ class SyntaxChecker:
         except IOError as e:
             print(e)
             return 0
+    
+    def main():
+        try:
+            filename = input("Enter the source file: ")
+            if SyntaxChecker.check_balanced(filename) == 1:
+                print("The input file is balanced")
+            else:
+                print("The input file is not balanced")
+        except IOError as e:
+            print(e)
+            
+if __name__ == "__main__":
+    SyntaxChecker.main()
+    
