@@ -38,4 +38,21 @@ class ERView(object):
         print(name, " is added to the ", condition, " list\n")
         
     def getCondition(self):
-        
+        menu = "Patient's Condition:\n" +\
+                "1. Critical\n" + \
+                "2. Serious\n" + \
+                "3. Fair\n"
+        number = self.getCommand(3, menu)
+        return Condition(number)
+    
+    def getCommand(self, high, menu):
+        prompt = "Enter a command[1-" + str(high) + "]: "
+        commandRange = list(map(str, range(1, high + 1)))
+        error = "Error, number must be 1 to " + str(high)
+        while True:
+            print(menu)
+            command = input(prompt)
+            if command in commandRange:
+                return int(command)
+            else:
+                print(error)
