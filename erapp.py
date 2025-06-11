@@ -56,3 +56,11 @@ class ERView(object):
                 return int(command)
             else:
                 print(error)
+                
+def main():
+    model = ERModel()
+    view = ERView(model)
+    view.run()
+    
+if __name__ == "__main__":
+    main()
