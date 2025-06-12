@@ -6,44 +6,45 @@ class Condition(object):
 
     def __eq__(self, other):
         return self._rank == other._rank
-    
+
     def __lt__(self, other):
         return self._rank < other._rank
-    
+
     def __le__(self, other):
         return self._rank <= other._rank
-    
+
     def __str__(self):
-        if self._rank == 1: return "critical"
+        if   self._rank == 1: return "critical"
         elif self._rank == 2: return "serious"
-        else: return "fair"
-        
+        else:                 return "fair"
+
 class Patient(object):
     def __init__(self, name, condition):
-        self.name = name
-        self.condition = condition
-        
+        self._name = name
+        self._condition = condition
+
     def __eq__(self, other):
-        return self.condition == other.condition
-    
+        return self._condition == other._condition
+
     def __lt__(self, other):
-        return self.condition < other.condition
-    
+        return self._condition < other._condition
+
     def __le__(self, other):
-        return self.condition <= other.condition
-    
+        return self._condition <= other._condition
+
     def __str__(self):
-        return self.name + " / " + str(self.condition)
-    
+        return self._name + " / " + str(self._condition)
+
 class ERModel(object):
+
     def __init__(self):
-        pass
-    
+        self._queue = LinkedPriorityQueue()  
+
     def isEmpty(self):
-        return True
-    
+        return self._queue.isEmpty()  
+
     def schedule(self, p):
-        pass
-    
+        self._queue.enqueue(p)  
+
     def treatNext(self):
-        return None
+        return self._queue.dequeue()  

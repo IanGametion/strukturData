@@ -1,3 +1,5 @@
+# Tidak pakai
+
 class AbstractCollection(object):
     def __init__(self, sourceCollection=None):
         self.size = 0

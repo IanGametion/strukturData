@@ -1,3 +1,5 @@
+# Tidak pakai
+
 from node import Node
 from abstractcollection import AbstractCollection
 
@@ -20,7 +22,7 @@ class LinkedQueue(AbstractCollection):
     def add(self, item):
         newNode = Node(item, None)
         if self.isEmpty():
-            self._front = self._rear = newNode
+            self._front = newNode
         else:
             self._rear.next = newNode
         self._rear = newNode
